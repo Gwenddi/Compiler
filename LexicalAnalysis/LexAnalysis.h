@@ -40,20 +40,16 @@ bool isLetter(char c)
  */
 bool isDelimiter(char c)
 {
-    if (c == '(' || c == ')' || c == '{' || c == '}' ||
-        c == '[' || c == ']' || c == '"' || c == '\'' || c == ',' || c == '.' || c == ';' || c == ':')
-        return true;
-    return false;
-    // string delimiters = "(),.;[]{}\":";
+    string delimiters = "(),.;[]{}\":";
 
-    // for (int i = 0; i < delimiters.length(); i++)
-    // {
-    //     if (c == delimiters[i])
-    //     {
-    //         return true;
-    //     }
-    // }
-    // return false;
+    for (int i = 0; i < delimiters.length(); i++)
+    {
+        if (c == delimiters[i])
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool isOperator(char c)
