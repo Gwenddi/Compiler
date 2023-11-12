@@ -1,2 +1,2 @@
 # CompilerExperiment
-ECNU编译原理课程项目及其学习资料
+简单记录一下2023年秋季学期ECNU编译原理课程项目及其学习资料
