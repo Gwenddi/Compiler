@@ -1,1 +1,7 @@
-int main(){char c = "h";/* 注释 12313test */if (c=="h")printf("%c",c);else print("k");return 0;}
+int main ( )
+{
+   //错误检测
+   int 123aa = 2;
+   int x=2**2;
+   return 0;
+}
