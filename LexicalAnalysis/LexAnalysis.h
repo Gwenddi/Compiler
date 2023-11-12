@@ -28,8 +28,15 @@ bool isLetter(char c) {
   return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' ;
 }
 
+/**
+ * @brief 
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
 bool isDelimiter(char c) {
-  string delimiters = "(),.;[]{}\"\\:";
+  string delimiters = "(),.;[]{}\":";
 
   for (int i = 0; i < delimiters.length(); i++) {
     if (c == delimiters[i]) {
@@ -75,6 +82,10 @@ struct token {
   }
 };
 
+/**
+ * @brief 
+ * 
+ */
 class LexicalAnalysis {
 public:
   string prog;
@@ -111,10 +122,13 @@ public:
   int get_letter(int pos, string word);
 };
 
-/// @brief 接受运算符或注释
-/// @param pos
-/// @param word
-/// @return 下一个token的前一个位置
+/**
+ * @brief 接受运算符或注释
+ * 
+ * @param pos 
+ * @param word 
+ * @return int 下一个token的前一个位置
+ */
 int LexicalAnalysis::get_operator(int pos, string word) {
   int i = pos;
   // int state = 0;
@@ -222,10 +236,13 @@ int LexicalAnalysis::get_operator(int pos, string word) {
   return pos + word.length() - 1;
 }
 
-/// @brief 接受（浮点型）数字--定义有3个状态的自动机，0-整數 1-浮点数 2-其他
-/// @param pos
-/// @param word
-/// @return 下一个token的前一个位置
+/**
+ * @brief 接受（浮点型）数字--定义有3个状态的自动机，0-整數 1-浮点数 2-其他
+ * 
+ * @param pos 
+ * @param word 
+ * @return int 下一个token的前一个位置
+ */
 int LexicalAnalysis::get_number(int pos, string word) {
   int temp = pos;
   int state = 0;
@@ -245,6 +262,7 @@ int LexicalAnalysis::get_number(int pos, string word) {
   return pos + word.length() - 1;
 }
 
+/*保留字的类型*/
 unordered_set<string> reserved = {"auto",     "break",   "case",   "char",     "const",
                         "continue", "default", "do",     "double",   "else",
                         "enum",     "extern",  "float",  "for",      "goto",
@@ -253,13 +271,17 @@ unordered_set<string> reserved = {"auto",     "break",   "case",   "char",     "
                         "switch",   "typedef", "union",  "unsigned", "void",
                         "volatile", "while"};
 
-/// @brief 接受保留字或标识符
-/// @param pos
-/// @param word
-/// @return 下一个token的前一个位置
+
+/**
+ * @brief 接受保留字或标识符
+ * 
+ * @param pos 
+ * @param word 
+ * @return int 下一个token的前一个位置
+ */
 int LexicalAnalysis::get_letter(int pos, string word) {
   int temp = pos;
-  // int state = 0;
+  
   while (temp + 1 < prog.length()) {
     if (isLetter(prog[temp + 1]) || isDigit(prog[temp + 1])) {
       word += prog[++temp];
@@ -275,9 +297,11 @@ int LexicalAnalysis::get_letter(int pos, string word) {
   return pos + word.length() - 1;
 }
 
-/// @brief 识别代码段并分割为token
-/// @param raw_prog
-/// @return
+/**
+ * @brief 识别代码段并分割为token
+ * 
+ * @param raw_prog 
+ */
 void LexicalAnalysis::token_scan(string raw_prog) {
   prog = raw_prog;
   string word = "";
@@ -307,9 +331,10 @@ void Analysis() {
   /********* Begin *********/
   LexicalAnalysis lexicalAnalysis = LexicalAnalysis();
   lexicalAnalysis.token_scan(prog);
-  for (const auto& token : lexicalAnalysis.res) {
-      cout << "<" << token.keyWord << "," << token.id << ">" << endl;
-  }
 
+  for (int i = 0; i < lexicalAnalysis.res.size(); i++) {
+    cout << i + 1 << ": <" << lexicalAnalysis.res[i].keyWord << ","
+         << lexicalAnalysis.res[i].id << ">" << endl;
+  }
   /********* End *********/
 }
