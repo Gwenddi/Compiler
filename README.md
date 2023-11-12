@@ -22,6 +22,10 @@ volatile    while
 注意，C_key.txt中缺少“//注释”的情况，请也映射到编号79！
 ## 输入
 样例输入放在prog.txt文件中
+```
+g++ C_LexAnalysis_mainProcess.cpp -o main
+./main < prog.txt or  Get-Content prog.txt | .\main
+```
 ### 样例1输入
 
     int main()
