@@ -1,0 +1,9 @@
+{ }
+if ( ) then else
+while ( )
+ID = 
+> < >= <= ==
++ -
+* /
+ID NUM
+E 是'空'
