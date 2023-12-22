@@ -1,6 +1,6 @@
 # CompilerExperiment
 
-## Lexical Analysis
+## 1. Lexical Analysis
 ### 任务描述
 
 本关任务：用 C/C++ 编写一个 C 语言的语法分析器程序。
