@@ -1,0 +1,6 @@
+int main ( )
+{
+   int 123aa = 2;
+   int x=2**2;
+   return 0;
+}
